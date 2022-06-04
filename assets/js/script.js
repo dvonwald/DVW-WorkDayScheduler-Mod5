@@ -23,6 +23,7 @@ console.log(hourNine)
 console.log(hourNine < currentHour)
 console.log(hourNine == currentHour)
 console.log(hourNine > currentHour)
+// console.log(timeBlocks[1].id.slice(5))
 
 // console.log(typeof timeBlocks)
 
@@ -30,37 +31,40 @@ console.log(hourNine > currentHour)
 
 colorBlock()
 
+// hourArray = $(timeBlocks).attr('id')
+// console.log(hourArray)
 
 function colorBlock() {
-    
-    // for (let i = 0; i < hourArray.length; i++) {
-    //     const hourObj = hourArray[i];
-    
-    // }
-    hourArray = $(timeBlocks).attr('id')
-    console.log(hourArray)
     $(timeBlocks).removeClass('past', 'present', 'future')
-
-if (hourNine < currentHour) {
-    // $(timeBlocks).removeClass('present');
-    // $(timeBlocks).removeClass('future');
-    $(timeBlocks).addClass('past');
-
-} else if (hourNine == currentHour) {
-    // $(timeBlocks).removeClass('future');
-    // $(timeBlocks).removeClass('past');
-    $(timeBlocks).addClass('present')
-
-} else if (hourNine > currentHour) {
-    // $(timeBlocks).removeClass('present');
-    // $(timeBlocks).removeClass('past');
-    $(timeBlocks).addClass('future');
-}
-}
-console.log(hourNine.parentNode)
-
+    for (let i = 0; i < timeBlocks.length; i++) {
+        // console.log(timeBlocks[i].id.slice(5))
+        // var timeBlocksArray = timeBlocks[i].id.slice(5)
+        // console.log(timeBlocksArray)
+        // console.log(currentHour)
+        // timeBlocks[i]
+        if (timeBlocks[i].id.slice(5) < currentHour) {
+            $(timeBlocks[i]).removeClass('present');
+            $(timeBlocks[i]).removeClass('future');
+            $(timeBlocks[i]).addClass('past');
+        } else if (timeBlocks[i].id.slice(5) == currentHour) {
+            $(timeBlocks[i]).removeClass('future');
+            $(timeBlocks[i]).removeClass('past');
+            $(timeBlocks[i]).addClass('present');
+        } else if (timeBlocks[i].id.slice(5) > currentHour) {
+            console.log(timeBlocks[i].id.slice(5))
+            // console.log(this)
+            $(timeBlocks[i]).removeClass('present');
+            $(timeBlocks[i]).removeClass('past');
+            $(timeBlocks[i]).addClass('future');
+        }
+}}
+    
 $(".button").on('click', function() {
-    alert($(this).parent().attr('id'));
+    var clickedBtnStr = $(this).parent().attr('id');
+    var clickedBtnNum = clickedBtnStr.slice(5);
+    alert(clickedBtnNum);
+    // alert($(this).parent().attr('id').split(5));
+
 });
 
 // function saveHourText() {
