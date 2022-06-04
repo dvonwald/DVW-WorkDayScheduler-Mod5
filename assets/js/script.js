@@ -18,18 +18,33 @@ $(jumboDate).text(today.format('MMMM, Do YYYY, h:mm a'));
 $(hourNine).on('click', saveHourText)
 
 console.log(currentHour)
-console.log($(".time-block").attr('id'))
+// console.log($(".time-block").attr('id'))
+console.log(hourNine < currentHour)
+console.log(hourNine == currentHour)
+console.log(hourNine > currentHour)
 
-// $(timeBlocks).addClass('present')
+// console.log(typeof timeBlocks)
+
+// $(timeBlocks).addClass('.past')
+
 colorBlock()
 
 function colorBlock() {
 if (hourNine < currentHour) {
+    $(timeBlocks).removeClass('present');
+    $(timeBlocks).removeClass('future');
     $(timeBlocks).addClass('past');
+
 } else if (hourNine == currentHour) {
-    $(timeBlocks).addclass('present')
-} else (hourNine > currentHour) 
-    $(timeBlocks).addClass('future')
+    $(timeBlocks).removeClass('future');
+    $(timeBlocks).removeClass('past');
+    $(timeBlocks).addClass('present')
+
+} else if (hourNine > currentHour) {
+    $(timeBlocks).removeClass('present');
+    $(timeBlocks).removeClass('past');
+    $(timeBlocks).addClass('future');
+}
 }
 
 
