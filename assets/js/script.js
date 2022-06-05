@@ -11,11 +11,9 @@ var hourFifteen = $('#hour-15')
 var hourSixteen = $('#hour-16')
 var hourSeventeen = $('#hour-17')
 var timeBlocks = $(".time-block") // selecting all rows that have time-block class
-var textBlocks = $('textarea')
+var textBlocks = $('textarea') // selects all textarea elements
 
 $(jumboDate).text(today.format('MMMM, Do YYYY, h:mm a')); // insert the current date/time to jumbotron
-
-// $(hourNine).on('click', saveHourText)
 
 //Console logs I used to help me troubleshoot and traverse DOM
 // console.log(hourNine)
@@ -28,24 +26,17 @@ console.log(hourNine > currentHour)
 // console.log(typeof timeBlocks)
 
 colorBlock() // Calling the colorBlock function
-
 function colorBlock() { // Delcaring/defining the colorBlock function 
     $(timeBlocks).removeClass('past', 'present', 'future') // removing classes from all timeBlocks
     for (let i = 0; i < timeBlocks.length; i++) { // using for loop on the timeBlocks object which is a collection of all time-block objects
         // console.log(timeBlocks[i])
         if (timeBlocks[i].id.slice(5) < currentHour) {
-            // $(timeBlocks[i]).removeClass('present');
-            // $(timeBlocks[i]).removeClass('future');
             $(timeBlocks[i]).addClass('past');
         } else if (timeBlocks[i].id.slice(5) == currentHour) {
-            // $(timeBlocks[i]).removeClass('future');
-            // $(timeBlocks[i]).removeClass('past');
             $(timeBlocks[i]).addClass('present');
         } else if (timeBlocks[i].id.slice(5) > currentHour) {
             // console.log(timeBlocks[i].id.slice(5))
             // console.log(this)
-            // $(timeBlocks[i]).removeClass('present');
-            // $(timeBlocks[i]).removeClass('past');
             $(timeBlocks[i]).addClass('future');
         }
 }}
@@ -56,17 +47,9 @@ $(".button").on('click', function() {
     localStorage.setItem("hour-" + clickedBtnNum, $(this).siblings('textarea').val())
     // console.log($(this).siblings('textarea').val())
     // alert(clickedBtnNum);
-    // alert($(this).parent().attr('id').split(5));
-
 });
 
-// console.log(textBlocks[0].value)
-var textInputVal = $(textBlocks).val();
-var textInput9 = (textBlocks[0].value)
-var textInput17 = {
-'hour-17': (textBlocks[8].value)
-}
-
+//function to retrieve the string value saved in localStorage and auto show it
 showSavedText()
 function showSavedText () {
     for (let i = 0; i < textBlocks.length; i++) {
