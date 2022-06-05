@@ -11,6 +11,7 @@ var hourFifteen = $('#hour-15')
 var hourSixteen = $('#hour-16')
 var hourSeventeen = $('#hour-17')
 var timeBlocks = $(".time-block") // selecting all rows that have time-block class
+var textBlocks = $('textarea')
 
 $(jumboDate).text(today.format('MMMM, Do YYYY, h:mm a')); // insert the current date/time to jumbotron
 
@@ -33,18 +34,18 @@ function colorBlock() { // Delcaring/defining the colorBlock function
     for (let i = 0; i < timeBlocks.length; i++) { // using for loop on the timeBlocks object which is a collection of all time-block objects
         // console.log(timeBlocks[i])
         if (timeBlocks[i].id.slice(5) < currentHour) {
-            $(timeBlocks[i]).removeClass('present');
-            $(timeBlocks[i]).removeClass('future');
+            // $(timeBlocks[i]).removeClass('present');
+            // $(timeBlocks[i]).removeClass('future');
             $(timeBlocks[i]).addClass('past');
         } else if (timeBlocks[i].id.slice(5) == currentHour) {
-            $(timeBlocks[i]).removeClass('future');
-            $(timeBlocks[i]).removeClass('past');
+            // $(timeBlocks[i]).removeClass('future');
+            // $(timeBlocks[i]).removeClass('past');
             $(timeBlocks[i]).addClass('present');
         } else if (timeBlocks[i].id.slice(5) > currentHour) {
             // console.log(timeBlocks[i].id.slice(5))
             // console.log(this)
-            $(timeBlocks[i]).removeClass('present');
-            $(timeBlocks[i]).removeClass('past');
+            // $(timeBlocks[i]).removeClass('present');
+            // $(timeBlocks[i]).removeClass('past');
             $(timeBlocks[i]).addClass('future');
         }
 }}
@@ -54,40 +55,23 @@ $(".button").on('click', function() {
     var clickedBtnNum = clickedBtnStr.slice(5);
     localStorage.setItem("hour-" + clickedBtnNum, $(this).siblings('textarea').val())
     // console.log($(this).siblings('textarea').val())
-    // console.log(textBlocks[0].value)
     // alert(clickedBtnNum);
     // alert($(this).parent().attr('id').split(5));
 
 });
 
-var textBlocks = $('textarea')
 // console.log(textBlocks[0].value)
 var textInputVal = $(textBlocks).val();
 var textInput9 = (textBlocks[0].value)
-var textInput10 = (textBlocks[1].value)
-var textInput11 = (textBlocks[2].value)
-var textInput12 = (textBlocks[3].value)
-var textInput13 = (textBlocks[4].value)
-var textInput14 = (textBlocks[5].value)
-var textInput15 = (textBlocks[6].value)
-var textInput16 = (textBlocks[7].value)
 var textInput17 = {
 'hour-17': (textBlocks[8].value)
 }
-// console.log(textInputVal)
-// localStorage.getItem
-// localStorage.setItem
 
-// var saveInput17 = JSON.parse(localStorage.setItem(textBlocks[0].value))
-
-// var textInputArray = 
-
-// function saveHourText() {
-    
-// }
-
-// function showSavedText ()
-//     for (let i = 0; i < array.length; i++) {
-//         const element = array[i];
-        
-//     }
+showSavedText()
+function showSavedText () {
+    for (let i = 0; i < textBlocks.length; i++) {
+        localStorage.getItem(timeBlocks[i].id)
+        console.log(localStorage.getItem(timeBlocks[i].id))
+        $(textBlocks[i]).text(localStorage.getItem(timeBlocks[i].id))
+    }
+}
