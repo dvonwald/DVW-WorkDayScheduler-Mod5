@@ -52,11 +52,42 @@ function colorBlock() { // Delcaring/defining the colorBlock function
 $(".button").on('click', function() {
     var clickedBtnStr = $(this).parent().attr('id');
     var clickedBtnNum = clickedBtnStr.slice(5);
-    alert(clickedBtnNum);
+    localStorage.setItem("hour-" + clickedBtnNum, $(this).siblings('textarea').val())
+    // console.log($(this).siblings('textarea').val())
+    // console.log(textBlocks[0].value)
+    // alert(clickedBtnNum);
     // alert($(this).parent().attr('id').split(5));
 
 });
 
+var textBlocks = $('textarea')
+// console.log(textBlocks[0].value)
+var textInputVal = $(textBlocks).val();
+var textInput9 = (textBlocks[0].value)
+var textInput10 = (textBlocks[1].value)
+var textInput11 = (textBlocks[2].value)
+var textInput12 = (textBlocks[3].value)
+var textInput13 = (textBlocks[4].value)
+var textInput14 = (textBlocks[5].value)
+var textInput15 = (textBlocks[6].value)
+var textInput16 = (textBlocks[7].value)
+var textInput17 = {
+'hour-17': (textBlocks[8].value)
+}
+// console.log(textInputVal)
+// localStorage.getItem
+// localStorage.setItem
+
+// var saveInput17 = JSON.parse(localStorage.setItem(textBlocks[0].value))
+
+// var textInputArray = 
+
 // function saveHourText() {
     
 // }
+
+// function showSavedText ()
+//     for (let i = 0; i < array.length; i++) {
+//         const element = array[i];
+        
+//     }
